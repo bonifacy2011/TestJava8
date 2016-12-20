@@ -31,9 +31,28 @@ public class Main {
 
 		System.out.println();
 
+		lst.add("list  22");
+		lst.add("list    22");
+		lst.add("list  22");
+		lst.add("list     22");
+		lst.add("list        22");
 		lst.sort((x, y) -> x.length() - y.length());// сортировка строк по
 													// длинне
 		lst.forEach(s -> System.out.println(s));
+
+		int total = lst.stream().mapToInt(t -> t.length()).peek(System.out::println).sum(); // pee
+																							// исп.
+																							// как
+																							// дебаггер
+																							// брекпоинт
+
+		// System.out.println(total);
+		System.setProperty("java.util.concurrent.ForkJoinPool.common.parallelism", "2"); // установка
+																							// количество
+																							// потоков
+		lst.parallelStream().forEach(t -> System.out.print(t.toString()));// использование
+																			// паралельных
+																			// потоков
 
 	}
 }
